@@ -1,9 +1,11 @@
 package model;
 
+import javax.persistence.OneToOne;
+
 public enum InstrumentType {
     STRING("STRING"), WIND("WIND"), PERCUSSION("PERCUSSION");
 
-    // @OneToOne(mappedBy = "instrument")
+    @OneToOne(mappedBy = "instrumentType")
     String type;
 
     InstrumentType(String type) {

@@ -18,6 +18,9 @@ public class Manager extends Person {
 	super(firstName, lastName);
     }
 
+    public Manager() {
+	super();
+    }
     
     @OneToMany(mappedBy = "manager")
     public Collection<Artist> artists;

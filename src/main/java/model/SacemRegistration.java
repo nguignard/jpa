@@ -1,7 +1,9 @@
 package model;
 
+import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,6 @@ import javax.persistence.TemporalType;
 @Table(name = "SacemRegistration")
 public class SacemRegistration {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
@@ -28,10 +29,11 @@ public class SacemRegistration {
     @Temporal(TemporalType.DATE)
     public Date date;
 
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     public Artist artist;
 
     public SacemRegistration() {
+	this.date = new Date(Calendar.getInstance().getTimeInMillis());
     }
 
     public int getId() {

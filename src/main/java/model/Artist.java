@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,8 +15,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "artist")
 public class Artist extends Person {
-
-
 
     @Column(name = "bandName")
     private String bandName;
@@ -29,13 +28,15 @@ public class Artist extends Person {
     @OneToMany(mappedBy = "artist")
     public Collection<Media> medias;
 
-    @ManyToOne()
+    @ManyToOne
     public Instrument favoriteInstrument;
 
     @ManyToMany
-    @JoinColumn(name = "artist_instrument", referencedColumnName = "artists", columnDefinition = "")
+    @JoinTable(name = "artist_instrument", joinColumns = @JoinColumn(name = "id_Artist", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_Instrument", referencedColumnName = "id"))
     public Collection<Instrument> instruments;
 
+    public Artist() {
+    }
 
     public Artist(String firstName, String lastName) {
 	super(firstName, lastName);

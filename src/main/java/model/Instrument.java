@@ -14,7 +14,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Instrument")
 public class Instrument {
-    
+
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
@@ -22,14 +23,58 @@ public class Instrument {
     @Column(name = "name")
     public String name;
 
-//    @OneToOne
-//    public InstrumentType instrumentType;
+    public String instrumentType;
 
     @ManyToMany(mappedBy = "instruments")
     public Collection<Artist> artists;
 
     @OneToMany(mappedBy = "favoriteInstrument")
-    public Collection<Artist> favoriteInstruments;
+    public Collection<Artist> favoriteInstrumentsArtists;
+
+    public Instrument() {
+	super();
+    }
+
+    //
+    public Instrument(String name) {
+	this.name = name;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public Collection<Artist> getArtists() {
+	return artists;
+    }
+
+    public void setArtists(Collection<Artist> artists) {
+	this.artists = artists;
+    }
+
+    public Collection<Artist> getFavoriteInstruments() {
+	return favoriteInstrumentsArtists;
+    }
+
+    public void setFavoriteInstruments(Collection<Artist> favoriteInstruments) {
+	this.favoriteInstrumentsArtists = favoriteInstruments;
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public String getInstrumentType() {
+	return instrumentType;
+    }
+
+    public void setInstrumentType(String instrumentType) {
+	this.instrumentType = instrumentType;
+    }
     
 
 }
