@@ -10,8 +10,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Media implements Serializable {
 
-
-
     @EmbeddedId
     public MediaId mediaId;
 

@@ -25,10 +25,10 @@ public class Artist extends Person {
     @OneToMany(mappedBy = "artist")
     public Collection<Media> medias;
 
-//    @Column(name = "favorite_Instruments")
-//    public Instrument favoriteInstruments;
+    @ManyToOne()
+    public Instrument favoriteInstrument;
 
-//    @OneToMany(mappedBy = "artist")
+//    @OneToMany(mappedBy = "playableArtists")
 //    public Collection<Instrument> playableInstruments;
 
 

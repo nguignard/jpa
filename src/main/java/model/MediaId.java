@@ -7,14 +7,14 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class MediaId implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    public String name;
+    public MediaType mediaType;
+
     public MediaId() {
-	super();
     }
 
-    public String name;
-    public Enum<MediaType> mediaType;
-
-    public MediaId(String name, Enum<MediaType> mediaType) {
+    public MediaId(String name, MediaType mediaType) {
 	this.name = name;
 	this.mediaType = mediaType;
     }
