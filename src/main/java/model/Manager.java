@@ -1,17 +1,20 @@
 package model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Managers")
+@Table(name = "Manager")
 public class Manager extends Person {
 
-
-//    @OneToMany(mappedBy = "manager")
-//    public Collection<Artist> artists;
+    public int budget;
     
+    @OneToMany(mappedBy = "manager")
+    public Collection<Artist> artists;
 
 
 }
