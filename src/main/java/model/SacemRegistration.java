@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 @Table(name = "SacemRegistration")
 public class SacemRegistration {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
@@ -27,7 +28,42 @@ public class SacemRegistration {
     @Temporal(TemporalType.DATE)
     public Date date;
 
-    @OneToOne
+    @OneToOne()
     public Artist artist;
+
+    public SacemRegistration() {
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public String getCode() {
+	return code;
+    }
+
+    public void setCode(String code) {
+	this.code = code;
+    }
+
+    public Date getDate() {
+	return date;
+    }
+
+    public void setDate(Date date) {
+	this.date = date;
+    }
+
+    public Artist getArtist() {
+	return artist;
+    }
+
+    public void setArtist(Artist artist) {
+	this.artist = artist;
+    }
 
 }

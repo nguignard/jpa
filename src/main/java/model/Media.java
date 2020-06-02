@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.EmbeddedId;
@@ -23,5 +24,6 @@ public class Media implements Serializable {
 
     public Media(MediaId mediaId) {
 	this.mediaId = mediaId;
+	this.releaseDate = new Date(Calendar.getInstance().getTimeInMillis());
     }
 }
