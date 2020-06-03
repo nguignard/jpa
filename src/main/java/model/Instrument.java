@@ -75,6 +75,7 @@ public class Instrument {
     public void setInstrumentType(String instrumentType) {
 	this.instrumentType = instrumentType;
     }
+
     
 
 }

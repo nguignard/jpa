@@ -9,6 +9,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
+
+import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQuery;
 
 import model.Artist;
 import model.Instrument;
@@ -60,14 +68,37 @@ public class Application {
 	    em.persist(artistF);
 	    transaction.commit();
 	    em.close();
+//
+//	    em = emf.createEntityManager();
+//	    String q = "SELECT a FROM  Artist a where a.favoriteInstrument=:favoriteInstrumentsArtists";
+//	    Query query = em.createQuery(q);
+//	    query.setParameter("favoriteInstrumentsArtists", violon);
+//	    
+//	    List<Artist> artists = query.getResultList();
+//	    System.out.println("artists.size() " + artists.size());
 
 	    em = emf.createEntityManager();
-	    String q = "SELECT a FROM  Artist a where a.favoriteInstrument=:favoriteInstrumentsArtists";
-	    Query query = em.createQuery(q);
-	    query.setParameter("favoriteInstrumentsArtists", violon);
-	    
-	    List<Artist> artists = query.getResultList();
+	    CriteriaBuilder cb = em.getCriteriaBuilder();
+	    CriteriaQuery<Artist> query = cb.createQuery(Artist.class);
+	    Root<Artist> a = query.from(Artist.class);
+
+	    Join<Artist, Instrument> artInst = a.join("favoriteInstrument");
+	    ParameterExpression<InstrumentType> param = cb.parameter(InstrumentType.class);
+	    query.select(a).where(cb.equal(artInst.get("Instrument"), param));
+
+	    //
+	    Query q = em.createQuery(query);
+	    List<Artist> artists = q.getResultList();
 	    System.out.println("artists.size() " + artists.size());
+
+	    // -----------------
+	    EntityManager entityManager = emf.createEntityManager();
+	    JPQLQuery jpaQuery = new JPAQuery(entityManager);
+
+	    // List<Person> persons =
+	    // query.from(person).where(person.firstName.eq("Kent")).list(person);
+
+	    //
 
 	} catch (Exception e) {
 	    e.printStackTrace();
