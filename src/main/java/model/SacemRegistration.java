@@ -20,17 +20,17 @@ public class SacemRegistration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     @Column(name = "code", unique = true)
-    public String code;
+    private String code;
 
     @Column(name = "date", nullable = false)
     @Temporal(TemporalType.DATE)
-    public Date date;
+    private Date date;
 
     @OneToOne(cascade = CascadeType.ALL)
-    public Artist artist;
+    private Artist artist;
 
     public SacemRegistration() {
 	this.date = new Date(Calendar.getInstance().getTimeInMillis());

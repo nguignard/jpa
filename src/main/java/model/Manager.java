@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "Manager")
 public class Manager extends Person {
 
-    public int budget;
+    private int budget;
 
     public Manager(String firstName, String lastName) {
 	super(firstName, lastName);
@@ -23,7 +23,7 @@ public class Manager extends Person {
     }
     
     @OneToMany(mappedBy = "manager")
-    public Collection<Artist> artists;
+    private Collection<Artist> artists;
 
     public int getBudget() {
 	return budget;

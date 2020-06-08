@@ -21,15 +21,15 @@ public class Instrument {
     private int id;
 
     @Column(name = "name")
-    public String name;
+    private String name;
 
-    public String instrumentType;
+    private String instrumentType;
 
     @ManyToMany(mappedBy = "instruments")
-    public Collection<Artist> artists;
+    private Collection<Artist> artists;
 
     @OneToMany(mappedBy = "favoriteInstrument")
-    public Collection<Artist> favoriteInstrumentsArtists;
+    private Collection<Artist> favoriteInstrumentsArtists;
 
     public Instrument() {
 	super();

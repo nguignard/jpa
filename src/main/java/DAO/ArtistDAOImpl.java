@@ -7,40 +7,47 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transaction;
 
+import annotation.JpaHearing;
 import model.Artist;
 
 public class ArtistDAOImpl implements ArtistDAO {
 
+    @JpaHearing
     @Override
     public Artist findById(Long id) {
 	// TODO Auto-generated method stub
 	return null;
     }
 
+    @JpaHearing
     @Override
     public void update(Artist entity) {
 	// TODO Auto-generated method stub
 
     }
 
+    @JpaHearing
     @Override
     public void delete(Artist entity) {
 	// TODO Auto-generated method stub
 
     }
 
+    @JpaHearing
     @Override
     public void deleteByKey(Long id) {
 	// TODO Auto-generated method stub
 
     }
 
+    @JpaHearing
     @Override
     public void create(Artist entity) {
 	// TODO Auto-generated method stub
 
     }
 
+    @JpaHearing
     @Override
     public Artist findOne(Artist t) {
 	Artist artist = null;
@@ -60,6 +67,7 @@ public class ArtistDAOImpl implements ArtistDAO {
     }
 
     @Override
+    @JpaHearing
     public Collection<Artist> findAll(String lastName) {
 	EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 
@@ -80,6 +88,7 @@ public class ArtistDAOImpl implements ArtistDAO {
     }
 
     @Override
+    @JpaHearing
     public Collection<Artist> findAll() {
 	// TODO Auto-generated method stub
 	return null;

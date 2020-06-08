@@ -12,12 +12,12 @@ import javax.persistence.ManyToOne;
 public class Media implements Serializable {
 
     @EmbeddedId
-    public MediaId mediaId;
+    private MediaId mediaId;
 
-    public Date releaseDate;
+    private Date releaseDate;
 
     @ManyToOne()
-    public Artist artist;
+    private Artist artist;
 
     public Media() {
     }
@@ -25,5 +25,13 @@ public class Media implements Serializable {
     public Media(MediaId mediaId) {
 	this.mediaId = mediaId;
 	this.releaseDate = new Date(Calendar.getInstance().getTimeInMillis());
+    }
+
+    public Date getReleaseDate() {
+	return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+	this.releaseDate = releaseDate;
     }
 }

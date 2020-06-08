@@ -20,20 +20,20 @@ public class Artist extends Person {
     private String bandName;
 
     @OneToOne()
-    public SacemRegistration sacemRegistration;
+    private SacemRegistration sacemRegistration;
 
     @ManyToOne()
-    public Manager manager;
+    private Manager manager;
 
     @OneToMany(mappedBy = "artist")
-    public Collection<Media> medias;
+    private Collection<Media> medias;
 
     @ManyToOne
-    public Instrument favoriteInstrument;
+    private Instrument favoriteInstrument;
 
     @ManyToMany
     @JoinTable(name = "artist_instrument", joinColumns = @JoinColumn(name = "id_Artist", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_Instrument", referencedColumnName = "id"))
-    public Collection<Instrument> instruments;
+    private Collection<Instrument> instruments;
 
     public Artist() {
     }

@@ -16,9 +16,9 @@ public abstract class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column
-    public String firstName;
+    private String firstName;
     @Column
-    public String lastName;
+    private String lastName;
 
     public Person() {
     }
